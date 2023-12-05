@@ -24,7 +24,7 @@ export const Home = () => {
     return (
         <>
             <div className='p-2 max-w-7xl relative md:p-8 mx-auto'>
-                <header className='flex justify-between mt-8'>
+                <header className='flex justify-between mt-8 sticky top-0 bg-white pt-6 pb-4 z-10'>
                     <h1 className="text-4xl font-semibold font-['Unbounded']">Papos</h1>
                     <div className='flex'>
                         <Search className={'w-8 h-8 mx-2'} />

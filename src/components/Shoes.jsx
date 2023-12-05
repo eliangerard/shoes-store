@@ -10,7 +10,7 @@ export const Shoes = () => {
     const [type, setType] = useState(0);
     const [selectedSize, setSelectedSize] = useState(0);
 
-    const { data: shoes, hasError, isLoading } = useFetch('https://shoes-back-7bid.onrender.com/shoes/' + id);
+    const { data: shoes, hasError, isLoading } = useFetch('http://localhost:3000/shoes/' + id);
 
     const handleBack = () => {
         navigate('/');
@@ -18,35 +18,37 @@ export const Shoes = () => {
     console.log(shoes);
 
     return (
-        <div>
+        <div className="md:flex h-full md:h-screen max-w-7xl relative md:p-8 mx-auto">
             {isLoading ? <p>Cargando...</p> : (
                 <>
-                    <button onClick={handleBack} className="absolute top-4 left-2 w-16 h-16 z-10 text-3xl font-bold">{'<'}</button>
-                    <div className="rounded-b-3xl h-60 p-8 overflow-hidden bg-neutral-100 relative flex items-center justify-center">
-                        <img className="w-full object-cover overflow-hidden mb-16 xl w-full absolute" src={'https://shoes-back-7bid.onrender.com/' + shoes.images[type]} alt={shoes.brand + ' ' + shoes.model} />
+                    <button onClick={handleBack} className="absolute top-8 left-8 w-16 h-16 z-10 text-3xl font-bold">{'<'}</button>
+                    <div className="md:w-1/2 rounded-b-3xl md:rounded-3xl h-72 md:h-full p-8 overflow-hidden bg-neutral-100 relative flex items-center justify-center">
+                        <img className="overflow-hidden mb-16 w-full absolute md:static" src={shoes.images[type]} alt={shoes.brand + ' ' + shoes.model} />
                     </div>
-                    <div className="flex flex-col items-center px-8 mb-32">
-                        <h2 className="font-bold text-2xl mt-6 text-center">{shoes.brand}</h2>
-                        <h1 className="font-semibold text-4xl mt-4 text-center">{shoes.model}</h1>
-                        <p className="text-3xl mt-4 mb-8">{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(shoes.price)}</p>
+                    <div className="flex flex-col items-center px-8 mb-32 md:h-full md:w-1/2">
+                        <h2 className="font-bold text-2xl mt-6 text-center w-full md:text-left">{shoes.brand}</h2>
+                        <h1 className="font-semibold text-4xl mt-4 text-center w-full md:text-left">{shoes.model}</h1>
+                        <p className="text-3xl mt-4 mb-8 w-full text-center md:text-left">{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(shoes.price)}</p>
                         <h3 className="w-full font-bold">Estilo</h3>
-                        <div className="flex w-full my-4">
+                        <div className="flex w-full my-4 py-2 overflow-x-auto">
+                            <div className="flex w-fit pl-2">
                             {shoes.images.map((image, index) => (
-                                <img className={'w-20 h-20 mr-2 rounded-xl bg-neutral-100 p-2 object-cover outline outline-0 outline-neutral-800' + (type == index ? ' outline-2' : '') + ' transition-all'} key={index} src={'https://shoes-back-7bid.onrender.com/' + image} alt={shoes.brand + ' ' + shoes.model} onClick={() => setType(index)} />
+                                <img className={'w-28 h-28 md:h-36 md:w-36 mr-2 rounded-xl hover:cursor-pointer bg-neutral-100 p-2 object-cover outline outline-0 outline-neutral-800 ' + (type == index ? ' shadow-inner' : '') + ' transition-all'} key={index} src={image} alt={shoes.brand + ' ' + shoes.model} onClick={() => setType(index)} />
                             ))}
+                            </div>
                         </div>
                         <h3 className="w-full font-bold my-4">Talla</h3>
                         <div className="flex overflow-x-auto w-full">
-                            <div className="flex w-fit">
+                            <div className="flex w-fit md:flex-wrap">
                                 {shoes.sizes.map((size, index) => (
                                     <button className={'bg-neutral-100 font-semibold rounded-xl p-2 mr-2 my-2 w-16 h-16 hover:bg-neutral-800 hover:text-neutral-50' + (selectedSize == index ? ' bg-neutral-800 text-neutral-50' : '') + ' transition-all'} key={size} onClick={() => setSelectedSize(index)}>{size}</button>
                                 ))}
                             </div>
                         </div>
                         <h3 className="w-full font-bold my-4">Descripción</h3>
-                        <p>{shoes.description}</p>
+                        <p className="w-full">{shoes.description}</p>
                     </div>
-                    <div className="flex fixed bottom-8 left-0 w-full px-8">
+                    <div className="flex fixed bottom-8 right-0 w-full md:w-1/2 px-8">
                         <button className="bg-white border-2 border-neutral-100 rounded-xl w-16 h-16">{'<3'}</button>
                         <button className="bg-neutral-800 rounded-full h-16 flex-1 ml-4 text-white font-semibold">Añadir al carrito</button>
                     </div>

@@ -2,12 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch'
 import { useEffect, useState } from 'react';
 import { Cart } from '../icons/cart';
+import { Search } from '../icons/search';
 
 export const Home = () => {
 
     const navigate = useNavigate();
 
-    const { data: shoes = [], hasError, isLoading } = useFetch('https://shoes-back-7bid.onrender.com/shoes');
+    const { data: shoes = [], hasError, isLoading } = useFetch('http://localhost:3000/shoes');
     const [brands, setBrands] = useState([]);
     useEffect(() => {
         if (isLoading) return;
@@ -22,12 +23,14 @@ export const Home = () => {
 
     return (
         <>
-            <div className='p-2'>
-                <header></header>
-                <div className='flex justify-between items-center mt-12 mb-8 px-8'>
-                    <h1 className='text-4xl font-semibold'>Papos</h1>
-                    <Cart className={'w-8 h-8'}/>
-                </div>
+            <div className='p-2 max-w-7xl relative md:p-8 mx-auto'>
+                <header className='flex justify-between mt-8'>
+                    <h1 className="text-4xl font-semibold font-['Unbounded']">Papos</h1>
+                    <div className='flex'>
+                        <Search className={'w-8 h-8 mx-2'} />
+                        <Cart className={'w-8 h-8 mx-2'} />
+                    </div>
+                </header>
                 {!isLoading && (
                     <div className='flex w-full my-4 overflow-x-auto'>
                         {
@@ -41,18 +44,21 @@ export const Home = () => {
                             ))
                         }
                     </div>)}
-                {!isLoading && shoes.map((shoe) => (
-                    <div className='bg-neutral-100 rounded-3xl flex flex-col items-center justify-center overflow-hidden w-full h-56 object-center relative mb-2'
-                        key={shoe._id}
-                        onClick={() => handleClick(shoe._id)}
-                    >
-                        <img className='w-8/12 absolute bottom-2' src={'https://shoes-back-7bid.onrender.com/' + shoe.images[0]} alt={shoe.brand + ' ' + shoe.model} />
-                        <div className='absolute bottom-8'>
-                            <h1 className='font-black text-center'>{shoe.brand + ' ' + shoe.model}</h1>
-                            <p className='font-semibold text-center'>{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(shoe.price)}</p>
+                <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+
+                    {!isLoading && shoes.map((shoe) => (
+                        <div className='bg-neutral-100 shadow-none hover:shadow-inner  hover:cursor-pointer select-none rounded-3xl flex flex-col items-center justify-center overflow-hidden w-full h-56 object-center relative trransition-all'
+                            key={shoe._id}
+                            onClick={() => handleClick(shoe._id)}
+                        >
+                            <img className='w-7/12 absolute bottom-1/2 translate-y-1/3' src={shoe.images[0]} alt={shoe.brand + ' ' + shoe.model} />
+                            <div className='absolute bottom-8'>
+                                <h1 className='font-black text-center'>{shoe.brand + ' ' + shoe.model}</h1>
+                                <p className='font-semibold text-center'>{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(shoe.price)}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </>
     )

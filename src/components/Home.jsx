@@ -7,7 +7,7 @@ export const Home = () => {
 
     const navigate = useNavigate();
 
-    const { data: shoes = [], hasError, isLoading } = useFetch('http://localhost:3000/shoes/');
+    const { data: shoes = [], hasError, isLoading } = useFetch('https://shoes-back-7bid.onrender.com/shoes');
     const [brands, setBrands] = useState([]);
     useEffect(() => {
         if (isLoading) return;
@@ -46,7 +46,7 @@ export const Home = () => {
                         key={shoe._id}
                         onClick={() => handleClick(shoe._id)}
                     >
-                        <img className='w-8/12 absolute bottom-2' src={'http://localhost:3000/' + shoe.images[0]} alt={shoe.brand + ' ' + shoe.model} />
+                        <img className='w-8/12 absolute bottom-2' src={'https://shoes-back-7bid.onrender.com/' + shoe.images[0]} alt={shoe.brand + ' ' + shoe.model} />
                         <div className='absolute bottom-8'>
                             <h1 className='font-black text-center'>{shoe.brand + ' ' + shoe.model}</h1>
                             <p className='font-semibold text-center'>{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(shoe.price)}</p>

@@ -10,7 +10,7 @@ export const Shoes = () => {
     const [type, setType] = useState(0);
     const [selectedSize, setSelectedSize] = useState(0);
 
-    const { data: shoes, hasError, isLoading } = useFetch('http://localhost:3000/shoes/' + id);
+    const { data: shoes, hasError, isLoading } = useFetch('https://shoes-back-7bid.onrender.com/shoes/' + id);
 
     const handleBack = () => {
         navigate('/');
@@ -23,7 +23,7 @@ export const Shoes = () => {
                 <>
                     <button onClick={handleBack} className="absolute top-4 left-2 w-16 h-16 z-10 text-3xl font-bold">{'<'}</button>
                     <div className="rounded-b-3xl h-60 p-8 overflow-hidden bg-neutral-100 relative flex items-center justify-center">
-                        <img className="w-full object-cover overflow-hidden mb-16 xl w-full absolute" src={'http://localhost:3000/' + shoes.images[type]} alt={shoes.brand + ' ' + shoes.model} />
+                        <img className="w-full object-cover overflow-hidden mb-16 xl w-full absolute" src={'https://shoes-back-7bid.onrender.com/' + shoes.images[type]} alt={shoes.brand + ' ' + shoes.model} />
                     </div>
                     <div className="flex flex-col items-center px-8 mb-32">
                         <h2 className="font-bold text-2xl mt-6 text-center">{shoes.brand}</h2>
@@ -32,7 +32,7 @@ export const Shoes = () => {
                         <h3 className="w-full font-bold">Estilo</h3>
                         <div className="flex w-full my-4">
                             {shoes.images.map((image, index) => (
-                                <img className={'w-20 h-20 mr-2 rounded-xl bg-neutral-100 p-2 object-cover outline outline-0 outline-neutral-800' + (type == index ? ' outline-2' : '') + ' transition-all'} key={index} src={'http://localhost:3000/' + image} alt={shoes.brand + ' ' + shoes.model} onClick={() => setType(index)} />
+                                <img className={'w-20 h-20 mr-2 rounded-xl bg-neutral-100 p-2 object-cover outline outline-0 outline-neutral-800' + (type == index ? ' outline-2' : '') + ' transition-all'} key={index} src={'https://shoes-back-7bid.onrender.com/' + image} alt={shoes.brand + ' ' + shoes.model} onClick={() => setType(index)} />
                             ))}
                         </div>
                         <h3 className="w-full font-bold my-4">Talla</h3>

@@ -8,7 +8,7 @@ export const Home = () => {
 
     const navigate = useNavigate();
 
-    const { data: shoes = [], hasError, isLoading } = useFetch('http://localhost:3000/shoes');
+    const { data: shoes = [], hasError, isLoading } = useFetch('https://shoes-back-7bid.onrender.com/shoes');
     const [brands, setBrands] = useState([]);
     useEffect(() => {
         if (isLoading) return;

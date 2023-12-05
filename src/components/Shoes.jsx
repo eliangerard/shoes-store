@@ -10,7 +10,7 @@ export const Shoes = () => {
     const [type, setType] = useState(0);
     const [selectedSize, setSelectedSize] = useState(0);
 
-    const { data: shoes, hasError, isLoading } = useFetch('http://localhost:3000/shoes/' + id);
+    const { data: shoes, hasError, isLoading } = useFetch('https://shoes-back-7bid.onrender.com/shoes/' + id);
 
     const handleBack = () => {
         navigate('/');
@@ -21,11 +21,11 @@ export const Shoes = () => {
         <div className="md:flex h-full md:h-screen max-w-7xl relative md:p-8 mx-auto">
             {isLoading ? <p>Cargando...</p> : (
                 <>
-                    <button onClick={handleBack} className="absolute top-8 left-8 w-16 h-16 z-10 text-3xl font-bold">{'<'}</button>
+                    <button onClick={handleBack} className="absolute top-6 left-2 md:top-8 md:left-8 w-16 h-16 z-10 text-3xl font-bold">{'<'}</button>
                     <div className="md:w-1/2 rounded-b-3xl md:rounded-3xl h-72 md:h-full p-8 overflow-hidden bg-neutral-100 relative flex items-center justify-center">
                         <img className="overflow-hidden mb-16 w-full absolute md:static" src={shoes.images[type]} alt={shoes.brand + ' ' + shoes.model} />
                     </div>
-                    <div className="flex flex-col items-center px-8 mb-32 md:h-full md:w-1/2">
+                    <div className="flex flex-col items-center px-2 md:px-8 mb-32 md:h-full md:w-1/2">
                         <h2 className="font-bold text-2xl mt-6 text-center w-full md:text-left">{shoes.brand}</h2>
                         <h1 className="font-semibold text-4xl mt-4 text-center w-full md:text-left">{shoes.model}</h1>
                         <p className="text-3xl mt-4 mb-8 w-full text-center md:text-left">{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(shoes.price)}</p>

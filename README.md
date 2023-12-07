@@ -1,8 +1,9 @@
-# React + Vite
+# Shoes store - Papos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend para el proyecto de Backend, toma la API enfocada a Productos y la interpreta para utilizarla guardando calzado, aunque realmente podría guardar cualquier tipo de prendas u otros productos que involucren tallas y estilos.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Despliegue del Frontend
+- [Shoes Store - Papos](https://shoes-store-kappa.vercel.app/)
+  
+Despliegue del Backend API
+- [Shoes API](https://shoes-gamemz.koyeb.app/products)

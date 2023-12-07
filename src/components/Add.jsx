@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 
-export const Shoes = () => {
+export const Add = () => {
 
     const navigate = useNavigate();
 
@@ -10,7 +10,7 @@ export const Shoes = () => {
     const [type, setType] = useState(0);
     const [selectedSize, setSelectedSize] = useState(0);
 
-    const { data: shoes, hasError, isLoading } = useFetch('https://shoes-gamemz.koyeb.app/products/' + id);
+    const { data: shoes, hasError, isLoading } = useFetch('https://shoes-gamemz.koyeb.app/products/657154b25f1f67655c9b4961');
 
     const handleBack = () => {
         navigate('/');

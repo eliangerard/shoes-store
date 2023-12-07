@@ -4,6 +4,7 @@ import { Home } from './components/Home';
 import { Shoes } from './components/Shoes';
 import { Cart } from './components/Cart';
 import { Header } from './UI/Header';
+import { Add } from './components/Add';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/shoes/:id' element={<Shoes />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/add' element={<Add />} />
         </Routes>
       </div>
     </BrowserRouter>

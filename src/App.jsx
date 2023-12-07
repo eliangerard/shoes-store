@@ -5,6 +5,7 @@ import { Shoes } from './components/Shoes';
 import { Cart } from './components/Cart';
 import { Header } from './UI/Header';
 import { Add } from './components/Add';
+import { Search } from './components/Search';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/shoes/:id' element={<Shoes />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/add' element={<Add />} />
+          <Route path='/search/:search' element={<Search />} />
         </Routes>
       </div>
     </BrowserRouter>

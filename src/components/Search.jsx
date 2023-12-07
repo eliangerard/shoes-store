@@ -1,12 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch'
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-export const Home = () => {
+export const Search = () => {
 
     const navigate = useNavigate();
 
-    const { data: shoes = [], hasError, isLoading } = useFetch('http://localhost:3000/products');
+    const { search } = useParams();
+    
+    const { data: shoes = [], hasError, isLoading } = useFetch('https://shoes-gamemz.koyeb.app/products/search/' + search);
     const [brands, setBrands] = useState([]);
     useEffect(() => {
         if (isLoading) return;

@@ -6,7 +6,7 @@ export const Home = () => {
 
     const navigate = useNavigate();
 
-    const { data: shoes = [], hasError, isLoading } = useFetch('http://localhost:3000/products');
+    const { data: shoes = [], hasError, isLoading } = useFetch('https://shoes-gamemz.koyeb.app/products');
     const [brands, setBrands] = useState([]);
     useEffect(() => {
         if (isLoading) return;
